@@ -1,0 +1,8 @@
+services:
+  database:
+    image: mariadb:latest
+    env_file: ./.env
+    ports:
+      - 3306:3306
+    environment:
+      - MARIADB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
