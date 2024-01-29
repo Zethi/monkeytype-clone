@@ -1,12 +1,14 @@
 package com.github.zethi.monkeytypebackendclone.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public final class Dictionary {
 
-    private String name;
+    private final String name;
 
-    private String[] words;
+    private final String[] words;
 
-    public Dictionary(String name, String[] words) {
+    public Dictionary(@JsonProperty("name") String name, @JsonProperty("words") String[] words) {
         this.name = name;
         this.words = words;
     }
