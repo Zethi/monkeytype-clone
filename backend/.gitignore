@@ -35,3 +35,7 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Test ###
+src/test/resources/data/**
+target/
