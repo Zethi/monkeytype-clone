@@ -38,4 +38,6 @@ out/
 
 ### Test ###
 src/test/resources/data/**
+!src/test/resources/data/.gitKeep
+!src/test/resources/data/dictionaries/.gitKeep
 target/
