@@ -30,7 +30,7 @@ public class JSONDictionaryRepository implements DictionaryRepository {
 
     @Override
     public Dictionary get(String name) throws IOException, DictionaryNotFoundException {
-        Path path = Paths.get(dictionaryPath + "/" + name + ".json");
+        Path path = Paths.get(this.dictionaryPath + "/" + name + ".json");
 
         if (!this.exists(name)) throw new DictionaryNotFoundException("Dictionary with name '" + name + "' not found");
 
@@ -45,7 +45,7 @@ public class JSONDictionaryRepository implements DictionaryRepository {
 
     @Override
     public void save(String name, Dictionary dictionary) throws IOException, JsonNodeIsNotAObjectException, CanNotCreateDictionaryException {
-        Path path = Paths.get(dictionaryPath + "/" + name + ".json");
+        Path path = Paths.get(this.dictionaryPath + "/" + name + ".json");
 
         JSON json = new JSON(objectMapper);
         json.setField("name", dictionary.getName());
@@ -60,7 +60,7 @@ public class JSONDictionaryRepository implements DictionaryRepository {
 
     @Override
     public void save(String name) throws FileAlreadyExistsException, CanNotCreateDictionaryException {
-        Path path = Paths.get(dictionaryPath + "/" + name + ".json");
+        Path path = Paths.get(this.dictionaryPath + "/" + name + ".json");
 
         try {
             fileService.createFile(path);
@@ -71,7 +71,7 @@ public class JSONDictionaryRepository implements DictionaryRepository {
 
     @Override
     public void delete(String name) throws DictionaryNotFoundException {
-        Path path = Paths.get(dictionaryPath + "/" + name + ".json");
+        Path path = Paths.get(this.dictionaryPath + "/" + name + ".json");
 
         if (!this.exists(name)) throw new DictionaryNotFoundException("Dictionary with name '" + name + "' not found");
 
@@ -80,13 +80,13 @@ public class JSONDictionaryRepository implements DictionaryRepository {
 
     @Override
     public boolean exists(String name) {
-        Path path = Paths.get(dictionaryPath + "/" + name + ".json");
+        Path path = Paths.get(this.dictionaryPath + "/" + name + ".json");
         return fileService.exists(path);
     }
 
     @Override
     public void update(String name, Dictionary dictionary) throws DictionaryNotFoundException, JsonNodeIsNotAObjectException, IOException {
-        Path path = Paths.get(dictionaryPath + "/" + name + ".json");
+        Path path = Paths.get(this.dictionaryPath + "/" + name + ".json");
 
         if (!this.exists(dictionary.getName())) throw new DictionaryNotFoundException();
 
