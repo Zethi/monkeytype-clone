@@ -1,4 +1,4 @@
-package com.github.zethi.monkeytypebackendclone.services;
+package com.github.zethi.monkeytypebackendclone.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.zethi.monkeytypebackendclone.entity.JSON;
@@ -11,12 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public final class JsonParserServiceTest {
+public final class JsonParserTest {
 
-    private final JsonParserService jsonParser;
+    private final JsonParser jsonParser;
 
     @Autowired
-    public JsonParserServiceTest(JsonParserService jsonParser) {
+    public JsonParserTest(JsonParser jsonParser) {
         this.jsonParser = jsonParser;
     }
 

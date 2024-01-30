@@ -5,11 +5,10 @@ import com.github.zethi.monkeytypebackendclone.entity.Dictionary;
 import com.github.zethi.monkeytypebackendclone.entity.JSON;
 import com.github.zethi.monkeytypebackendclone.exceptions.*;
 import com.github.zethi.monkeytypebackendclone.services.FileService;
-import com.github.zethi.monkeytypebackendclone.services.JsonParserService;
+import com.github.zethi.monkeytypebackendclone.utils.JsonParser;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -17,11 +16,11 @@ public class JSONDictionaryRepository implements DictionaryRepository {
 
     private final String dictionaryPath;
     private final FileService fileService;
-    private final JsonParserService jsonParser;
+    private final JsonParser jsonParser;
     private final ObjectMapper objectMapper;
 
     @Autowired
-    public JSONDictionaryRepository(String dictionaryPath, FileService fileService, JsonParserService jsonParser, ObjectMapper objectMapper) {
+    public JSONDictionaryRepository(String dictionaryPath, FileService fileService, JsonParser jsonParser, ObjectMapper objectMapper) {
         this.dictionaryPath = dictionaryPath;
         this.fileService = fileService;
         this.jsonParser = jsonParser;
