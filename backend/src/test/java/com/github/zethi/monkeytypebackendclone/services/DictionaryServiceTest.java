@@ -5,7 +5,7 @@ import com.github.zethi.monkeytypebackendclone.exceptions.CanNotCreateDictionary
 import com.github.zethi.monkeytypebackendclone.exceptions.DictionaryAlreadyExistsException;
 import com.github.zethi.monkeytypebackendclone.exceptions.DictionaryNotFoundException;
 import com.github.zethi.monkeytypebackendclone.exceptions.JsonNodeIsNotAObjectException;
-import com.github.zethi.monkeytypebackendclone.utils.Randomizer;
+import com.github.zethi.monkeytypebackendclone.testingUtils.Randomizer;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

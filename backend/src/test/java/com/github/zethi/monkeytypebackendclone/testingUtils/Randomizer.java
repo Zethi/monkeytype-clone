@@ -1,4 +1,4 @@
-package com.github.zethi.monkeytypebackendclone.utils;
+package com.github.zethi.monkeytypebackendclone.testingUtils;
 
 import java.util.Random;
 
