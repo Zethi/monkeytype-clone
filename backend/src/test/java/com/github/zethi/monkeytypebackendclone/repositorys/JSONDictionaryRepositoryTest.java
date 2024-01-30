@@ -27,7 +27,7 @@ public final class JSONDictionaryRepositoryTest {
     @Test
     @Order(1)
     @DisplayName("Create blank dictionary")
-    public void shouldCreateADictionary() throws FileAlreadyExistsException, CanNotCreateDictionaryException {
+    public void shouldCreateADictionary() throws CanNotCreateDictionaryException, JsonNodeIsNotAObjectException, IOException {
         jsonDictionaryRepository.save(testDictionaryName);
         Assertions.assertTrue(jsonDictionaryRepository.exists(testDictionaryName));
     }

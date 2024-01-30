@@ -5,7 +5,7 @@ import com.github.zethi.monkeytypebackendclone.entity.Dictionary;
 import com.github.zethi.monkeytypebackendclone.entity.JSON;
 import com.github.zethi.monkeytypebackendclone.exceptions.*;
 import com.github.zethi.monkeytypebackendclone.services.FileService;
-import com.github.zethi.monkeytypebackendclone.utils.JsonParser;
+import com.github.zethi.monkeytypebackendclone.services.JsonParserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
@@ -17,11 +17,11 @@ public class JSONDictionaryRepository implements DictionaryRepository {
 
     private final String dictionaryPath;
     private final FileService fileService;
-    private final JsonParser jsonParser;
+    private final JsonParserService jsonParser;
     private final ObjectMapper objectMapper;
 
     @Autowired
-    public JSONDictionaryRepository(String dictionaryPath, FileService fileService, JsonParser jsonParser, ObjectMapper objectMapper) {
+    public JSONDictionaryRepository(String dictionaryPath, FileService fileService, JsonParserService jsonParser, ObjectMapper objectMapper) {
         this.dictionaryPath = dictionaryPath;
         this.fileService = fileService;
         this.jsonParser = jsonParser;
@@ -59,11 +59,15 @@ public class JSONDictionaryRepository implements DictionaryRepository {
     }
 
     @Override
-    public void save(String name) throws FileAlreadyExistsException, CanNotCreateDictionaryException {
+    public void save(String name) throws IOException, CanNotCreateDictionaryException, JsonNodeIsNotAObjectException {
         Path path = Paths.get(this.dictionaryPath + "/" + name + ".json");
 
+        JSON json = new JSON(objectMapper);
+        json.setField("name", "");
+        json.setField("words", new String[]{});
+
         try {
-            fileService.createFile(path);
+            fileService.createFile(path, json.toString());
         } catch (CanNotCreateFileException exception) {
             throw new CanNotCreateDictionaryException();
         }
