@@ -6,3 +6,12 @@ services:
       - 3306:3306
     environment:
       - MARIADB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
+
+  backend:
+    ports:
+      - 8080:8080 
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+      args:
+        - JAR_FILE=backend/build/libs/app.jar
