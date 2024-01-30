@@ -19,7 +19,7 @@ public final class DictionaryService {
     }
 
 
-    public void save(String name) throws DictionaryAlreadyExistsException, IOException, CanNotCreateDictionaryException {
+    public void save(String name) throws DictionaryAlreadyExistsException, IOException, CanNotCreateDictionaryException, JsonNodeIsNotAObjectException {
         this.dictionaryRepository.save(name);
     }
 
