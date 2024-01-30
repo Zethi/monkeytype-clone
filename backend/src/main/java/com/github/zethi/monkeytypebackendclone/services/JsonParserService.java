@@ -1,20 +1,20 @@
-package com.github.zethi.monkeytypebackendclone.utils;
+package com.github.zethi.monkeytypebackendclone.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.zethi.monkeytypebackendclone.entity.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 
-@Component
-public class JsonParser {
+@Service
+public final class JsonParserService {
 
     private final ObjectMapper objectMapper;
 
     @Autowired
-    public JsonParser(ObjectMapper objectMapper) {
+    public JsonParserService(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
 

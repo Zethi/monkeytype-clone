@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.zethi.monkeytypebackendclone.entity.JSON;
 import com.github.zethi.monkeytypebackendclone.exceptions.JsonNodeIsNotAObjectException;
 import com.github.zethi.monkeytypebackendclone.mocks.Example;
-import com.github.zethi.monkeytypebackendclone.utils.JsonParser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,12 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public final class JsonParserTest {
+public final class JsonParserServiceTest {
 
-    private final JsonParser jsonParser;
+    private final JsonParserService jsonParser;
 
     @Autowired
-    public JsonParserTest(JsonParser jsonParser) {
+    public JsonParserServiceTest(JsonParserService jsonParser) {
         this.jsonParser = jsonParser;
     }
 

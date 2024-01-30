@@ -5,7 +5,7 @@ import com.github.zethi.monkeytypebackendclone.entity.JSON;
 import com.github.zethi.monkeytypebackendclone.repositorys.DictionaryRepository;
 import com.github.zethi.monkeytypebackendclone.repositorys.JSONDictionaryRepository;
 import com.github.zethi.monkeytypebackendclone.services.FileService;
-import com.github.zethi.monkeytypebackendclone.utils.JsonParser;
+import com.github.zethi.monkeytypebackendclone.services.JsonParserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -19,17 +19,12 @@ public final class Container {
     }
 
     @Bean
-    public JsonParser instanceJsonParser(@Autowired ObjectMapper objectMapper) {
-        return new JsonParser(objectMapper);
-    }
-
-    @Bean
     public JSON JSON(@Autowired ObjectMapper objectMapper) {
         return new JSON(objectMapper);
     }
 
     @Bean
-    public DictionaryRepository dictionaryRepository(@Autowired FileService fileService, @Autowired JsonParser jsonParser, @Autowired ObjectMapper objectMapper) {
+    public DictionaryRepository dictionaryRepository(@Autowired FileService fileService, @Autowired JsonParserService jsonParser, @Autowired ObjectMapper objectMapper) {
         return new JSONDictionaryRepository("data/dictionaries", fileService, jsonParser, objectMapper);
     }
 

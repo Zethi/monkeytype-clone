@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.zethi.monkeytypebackendclone.repositorys.DictionaryRepository;
 import com.github.zethi.monkeytypebackendclone.repositorys.JSONDictionaryRepository;
 import com.github.zethi.monkeytypebackendclone.services.FileService;
-import com.github.zethi.monkeytypebackendclone.utils.JsonParser;
+import com.github.zethi.monkeytypebackendclone.services.JsonParserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Bean;
 public class TestContainer {
 
     @Bean
-    public DictionaryRepository dictionaryRepository(@Autowired FileService fileService, @Autowired JsonParser jsonParser, @Autowired ObjectMapper objectMapper) {
+    public DictionaryRepository dictionaryRepository(@Autowired FileService fileService, @Autowired JsonParserService jsonParser, @Autowired ObjectMapper objectMapper) {
         return new JSONDictionaryRepository("src/test/resources/data/dictionaries", fileService, jsonParser, objectMapper);
     }
 
