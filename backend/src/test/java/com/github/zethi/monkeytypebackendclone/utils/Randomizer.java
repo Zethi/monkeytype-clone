@@ -7,7 +7,6 @@ public final class Randomizer {
 
     public static String[] generateRandomStringArray(int arrayLength, int stringLength) {
         String[] randomStrings = new String[arrayLength];
-        Random random = new Random();
 
         for (int i = 0; i < arrayLength; i++) {
             randomStrings[i] = generateRandomString(stringLength);
