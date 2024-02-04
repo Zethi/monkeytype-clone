@@ -25,6 +25,13 @@ bootJar {
 	archiveFileName = 'app.jar'
 }
 
+bootRun {
+	environment "SPRING_PROFILES_ACTIVE", System.getenv("SPRING_PROFILES_ACTIVE") ?: "dev"
+	environment "DB_URL", System.getenv("DB_${System.getenv("SPRING_PROFILES_ACTIVE")}_URL")
+	environment "DB_USERNAME", System.getenv("DB_${System.getenv("SPRING_PROFILES_ACTIVE")}_USERNAME")
+	environment "DB_PASSWORD", System.getenv("DB_${System.getenv("SPRING_PROFILES_ACTIVE")}_PASSWORD")
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 //	implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -44,8 +51,8 @@ dependencies {
 }
 
 tasks.named('test') {
-	environment "DB_URL", System.getenv("DB_URL")
-	environment "DB_USERNAME", System.getenv("DB_USERNAME")
-	environment "DB_PASSWORD", System.getenv("DB_PASSWORD")
+	environment "DB_URL", System.getenv("DB_${System.getenv("SPRING_PROFILES_ACTIVE")}_URL")
+	environment "DB_USERNAME", System.getenv("DB_${System.getenv("SPRING_PROFILES_ACTIVE")}_USERNAME")
+	environment "DB_PASSWORD", System.getenv("DB_${System.getenv("SPRING_PROFILES_ACTIVE")}_PASSWORD")
 	useJUnitPlatform()
 }
