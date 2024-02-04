@@ -27,7 +27,7 @@ public final class JSONDictionaryRepositoryTest {
     @Test
     @Order(1)
     @DisplayName("Create blank dictionary")
-    public void shouldCreateADictionary() throws CanNotCreateDictionaryException, JsonNodeIsNotAObjectException, IOException {
+    public void shouldCreateADictionary() throws CanNotCreateDictionaryException, JsonNodeIsNotAObjectException, IOException, DictionaryAlreadyExistsException {
         jsonDictionaryRepository.save(testDictionaryName);
         Assertions.assertTrue(jsonDictionaryRepository.exists(testDictionaryName));
     }
@@ -35,7 +35,7 @@ public final class JSONDictionaryRepositoryTest {
     @Test
     @Order(2)
     @DisplayName("Create dictionary with content")
-    public void shouldCreateADirectoryWithDefaultData() throws JsonNodeIsNotAObjectException, IOException, CanNotCreateDictionaryException {
+    public void shouldCreateADirectoryWithDefaultData() throws JsonNodeIsNotAObjectException, IOException, CanNotCreateDictionaryException, DictionaryAlreadyExistsException {
         Dictionary dictionary = new Dictionary(testDictionaryWriteName, new String[]{"one", "two", "three", "fourth"});
         jsonDictionaryRepository.save(dictionary.getName(), dictionary);
     }
