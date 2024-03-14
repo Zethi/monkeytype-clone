@@ -1,9 +1,10 @@
-package com.github.zethi.monkeytypebackendclone.repositorys;
+package com.github.zethi.monkeytypebackendclone.repositorys.implementation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.zethi.monkeytypebackendclone.entity.Dictionary;
 import com.github.zethi.monkeytypebackendclone.entity.JSON;
 import com.github.zethi.monkeytypebackendclone.exceptions.*;
+import com.github.zethi.monkeytypebackendclone.repositorys.DictionaryRepository;
 import com.github.zethi.monkeytypebackendclone.services.FileService;
 import com.github.zethi.monkeytypebackendclone.utils.JsonParser;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class JSONDictionaryRepository implements DictionaryRepository {
+public class JSONDictionaryRepositoryImpl implements DictionaryRepository {
 
     private final String dictionaryPath;
     private final FileService fileService;
@@ -21,7 +22,7 @@ public class JSONDictionaryRepository implements DictionaryRepository {
     private final ObjectMapper objectMapper;
 
     @Autowired
-    public JSONDictionaryRepository(String dictionaryPath, FileService fileService, JsonParser jsonParser, ObjectMapper objectMapper) {
+    public JSONDictionaryRepositoryImpl(String dictionaryPath, FileService fileService, JsonParser jsonParser, ObjectMapper objectMapper) {
         this.dictionaryPath = dictionaryPath;
         this.fileService = fileService;
         this.jsonParser = jsonParser;

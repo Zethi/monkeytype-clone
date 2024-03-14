@@ -2,23 +2,23 @@ package com.github.zethi.monkeytypebackendclone.repositorys;
 
 import com.github.zethi.monkeytypebackendclone.entity.Dictionary;
 import com.github.zethi.monkeytypebackendclone.exceptions.*;
+import com.github.zethi.monkeytypebackendclone.repositorys.implementation.JSONDictionaryRepositoryImpl;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public final class JSONDictionaryRepositoryTest {
 
-    private final JSONDictionaryRepository jsonDictionaryRepository;
+    private final JSONDictionaryRepositoryImpl jsonDictionaryRepository;
     private final String testDictionaryName;
     private final String testDictionaryWriteName;
 
     @Autowired
-    public JSONDictionaryRepositoryTest(JSONDictionaryRepository jsonDictionaryRepository) {
+    public JSONDictionaryRepositoryTest(JSONDictionaryRepositoryImpl jsonDictionaryRepository) {
         this.jsonDictionaryRepository = jsonDictionaryRepository;
         this.testDictionaryName = "test";
         this.testDictionaryWriteName = testDictionaryName + "-write";
