@@ -31,8 +31,8 @@ public class SpringSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers(Endpoints.PUBLIC_ENDPOINTS).permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers(Endpoints.PRIVATE_ENDPOINTS).authenticated()
+                        .anyRequest().permitAll()
                 )
                 .authenticationProvider(this.authenticationProvider())
                 .httpBasic(Customizer.withDefaults())
