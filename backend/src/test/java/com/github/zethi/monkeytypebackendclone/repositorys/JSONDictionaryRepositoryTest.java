@@ -2,23 +2,23 @@ package com.github.zethi.monkeytypebackendclone.repositorys;
 
 import com.github.zethi.monkeytypebackendclone.entity.Dictionary;
 import com.github.zethi.monkeytypebackendclone.exceptions.*;
+import com.github.zethi.monkeytypebackendclone.repositorys.implementation.JSONDictionaryRepositoryImpl;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.IOException;
-import java.nio.file.FileAlreadyExistsException;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public final class JSONDictionaryRepositoryTest {
 
-    private final JSONDictionaryRepository jsonDictionaryRepository;
+    private final JSONDictionaryRepositoryImpl jsonDictionaryRepository;
     private final String testDictionaryName;
     private final String testDictionaryWriteName;
 
     @Autowired
-    public JSONDictionaryRepositoryTest(JSONDictionaryRepository jsonDictionaryRepository) {
+    public JSONDictionaryRepositoryTest(JSONDictionaryRepositoryImpl jsonDictionaryRepository) {
         this.jsonDictionaryRepository = jsonDictionaryRepository;
         this.testDictionaryName = "test";
         this.testDictionaryWriteName = testDictionaryName + "-write";
@@ -27,7 +27,7 @@ public final class JSONDictionaryRepositoryTest {
     @Test
     @Order(1)
     @DisplayName("Create blank dictionary")
-    public void shouldCreateADictionary() throws CanNotCreateDictionaryException, JsonNodeIsNotAObjectException, IOException {
+    public void shouldCreateADictionary() throws CanNotCreateDictionaryException, JsonNodeIsNotAObjectException, IOException, DictionaryAlreadyExistsException {
         jsonDictionaryRepository.save(testDictionaryName);
         Assertions.assertTrue(jsonDictionaryRepository.exists(testDictionaryName));
     }
@@ -35,7 +35,7 @@ public final class JSONDictionaryRepositoryTest {
     @Test
     @Order(2)
     @DisplayName("Create dictionary with content")
-    public void shouldCreateADirectoryWithDefaultData() throws JsonNodeIsNotAObjectException, IOException, CanNotCreateDictionaryException {
+    public void shouldCreateADirectoryWithDefaultData() throws JsonNodeIsNotAObjectException, IOException, CanNotCreateDictionaryException, DictionaryAlreadyExistsException {
         Dictionary dictionary = new Dictionary(testDictionaryWriteName, new String[]{"one", "two", "three", "fourth"});
         jsonDictionaryRepository.save(dictionary.getName(), dictionary);
     }
